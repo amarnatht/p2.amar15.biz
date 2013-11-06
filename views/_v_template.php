@@ -23,7 +23,7 @@
            <li> <a href='/posts/index'>View Member Posts</a> </li>
            <li> <a href='/posts/add'> Add New Post</a> </li>
             <li><a href='/posts/users'>Follow Members</a> </li>
-            <li><a href='/users/profile'>Member Profile</a> </li>
+            <li><a href='/users/profile'>Edit Member Profile</a> </li>
             <li><a href='/users/logout'>Logout</a> </li>
 
         <!-- Menu options for users who are not logged in -->

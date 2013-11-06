@@ -44,10 +44,11 @@ class posts_controller extends base_controller {
         DB::instance(DB_NAME)->insert('posts', $_POST);
 
         # Quick and dirty feedback
-        echo "Your post has been added. <a href='/posts/add'> Do you want to add another Post ? </a>";
+        //echo "Your post has been added. <a href='/posts/add'> Do you want to add another Post ? </a>";
         
         # To view list of active posts
         Router::redirect("/posts/add");
+        
     }
     }
 
