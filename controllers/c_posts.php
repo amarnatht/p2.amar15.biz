@@ -12,11 +12,11 @@ class posts_controller extends base_controller {
 
     public function add() {
 
-        # Setup view
+        # Setup view to add
         $this->template->content = View::instance('v_posts_add');
         $this->template->title   = "New Post";
 
-        # Render template
+        # Render template 
         echo $this->template;
 
     }
