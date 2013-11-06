@@ -1,7 +1,7 @@
 
 <h1>Welcome to <?=APP_NAME?>
     <?php if($user) :?> 
-        <?php echo ' , ' .$user->first_name .': look for blog options';?>
+        <?php echo ' , ' .$user->first_name .': share your ideas';?>
     <?php endif ?>
 </h1>
 
@@ -13,5 +13,5 @@
 
 </ul>
 
-<p><?=APP_NAME?> is a blog where people can share  messages with other users. 	</p> 
+<p><?=APP_NAME?> is a blog where people can share interested messages with other users.</p> 
     

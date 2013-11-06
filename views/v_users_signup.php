@@ -27,8 +27,7 @@
         <br>
     <?php endif; ?>
 
-
-    <input type='submit' style="background-color: #6A5ACD; color: #0000CD;">
+    <input type='submit' value='sign up' >   
 
 
 </form>

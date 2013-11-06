@@ -8,7 +8,7 @@ margin: 0 auto;
 #talign { 
 top:0px; 
 left: 0px; 
-background-color: #368E7F; 
+background-color: #43BB75; 
 color: #fff;
 padding: .10em 6em;
 } 
@@ -32,7 +32,7 @@ text-align: center;
 text-decoration: none;
 padding: .4em 1em;
 color: #fff;
-background-color: #368E7F;
+background-color: #43BB75;
 border-radius:50px;
 }
 
@@ -40,7 +40,7 @@ border-radius:50px;
 #menu ul li a:hover
 {
 color: #fff;
-background-color: #368E7F;
+background-color: #43BB75;
 }
 
 

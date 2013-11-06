@@ -16,7 +16,7 @@
         <br>
     <?php endif; ?>
 
-    <input type='submit' value='Log in' style="background-color: #6A5ACD; color: #0000CD;">
+    <input type='submit' value='Log in' >
   <!--  <input type='submit' value='Log in'> -->
 
 </form>
