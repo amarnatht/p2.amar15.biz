@@ -4,7 +4,14 @@
     <textarea name='content' id='content'></textarea>
 
     <br><br>
-    <input type='submit' value='Submit' style= "background-color:#6A5ACD; color:#0000CD;">
+
+    <?php if(isset($error)): ?>
+    <div>
+          Error: Complete all the fields and try again.
+    <div>
+    <?php endif; ?>
+
+    <input type='submit' value='Submit'>
 
 </form>
 

@@ -10,11 +10,14 @@ class posts_controller extends base_controller {
         }
     }
 
-    public function add() {
+    public function add($error = NULL) {
 
         # Setup view to add
         $this->template->content = View::instance('v_posts_add');
         $this->template->title   = "New Post";
+
+        # Pass error data to the view
+            $this->template->content->error = $error;
 
         # Render template 
         echo $this->template;
@@ -22,6 +25,12 @@ class posts_controller extends base_controller {
     }
 
     public function p_add() {
+
+         if(empty($_POST['content'])) {
+            Router::redirect("/posts/add/error");
+            //   echo 'Please fill all fields and submit again'; 
+        } 
+        else {
 
         # Associate this post with this user
         $_POST['user_id']  = $this->user->user_id;
@@ -38,8 +47,8 @@ class posts_controller extends base_controller {
         echo "Your post has been added. <a href='/posts/add'> Do you want to add another Post ? </a>";
         
         # To view list of active posts
-        Router::redirect("/posts/index");
-
+        Router::redirect("/posts/add");
+    }
     }
 
 public function index() {

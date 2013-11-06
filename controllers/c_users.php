@@ -17,19 +17,29 @@ class users_controller extends base_controller {
     }
 
 
-public function signup() {
+public function signup($error = NULL) {
 
         # Setup view
-            $this->template->content = View::instance('v_users_signup');
-            $this->template->title   = "Sign Up";
-
+        $this->template->content = View::instance('v_users_signup');
+        $this->template->title   = "Sign Up";
+        
+        # Send error data to the view
+         $this->template->content->error = $error;
+        
         # Render template
-            echo $this->template;
-
+        echo $this->template;
     }
+
 
 public function p_signup() {
 
+    if(empty($_POST['first_name']) or empty($_POST['last_name']) or empty($_POST['email']) or empty($_POST['password'])) {
+        
+        # Redirect to error messsage
+        Router::redirect("/users/signup/error");
+        } 
+        else {
+  
     # More data we want stored with the user
     $_POST['created']  = Time::now();
     $_POST['modified'] = Time::now();
@@ -42,14 +52,11 @@ public function p_signup() {
 
     # Insert this user into the database 
     $user_id = DB::instance(DB_NAME)->insert("users", $_POST);
-
-    # For now, just confirm they've signed up - 
-    # You should eventually make a proper View for this
-    // echo 'You\'re signed up';
-    # Redirect to Posts Page
+    
+    # Redirect to login Page
     Router::redirect("/users/login");
-
-}
+        }
+    }
 
 /*
 
@@ -72,6 +79,13 @@ public function p_signup() {
 }
 
 public function p_login() {
+
+     if(empty($_POST['email']) or empty($_POST['password'])) {
+        
+        # Redirect to error messsage
+        Router::redirect("/users/login/error");
+        } 
+        else {
 
     # Sanitize the user entered data to prevent any funny-business (re: SQL Injection Attacks)
     $_POST = DB::instance(DB_NAME)->sanitize($_POST);
@@ -110,30 +124,62 @@ public function p_login() {
 
         # Send them to the main page - or whever you want them to go
         Router::redirect("/posts/add");
-
+    }
     }
 
 }
 
-public function profile() {
+public function profile($error = NULL) {
 
-    # If user is blank, they're not logged in; redirect them to the login page
-    if(!$this->user) {
-        Router::redirect('/users/login');
+            # If user is blank, they're not logged in; redirect them to the login page
+            if(!$this->user) {
+                Router::redirect('/users/login');
+            }
+
+            # If they weren't redirected away, continue:
+            
+            # Setup view
+            $this->template->content = View::instance('v_users_profile');
+            $this->template->title   = "Profile of".$this->user->first_name;
+            
+            # Pass error data to the view
+            $this->template->content->error = $error;
+            
+            # Render template
+            echo $this->template;
+        }
+
+    public function p_profile() {
+        # Dump out the results of POST to see what the form submitted
+      
+        if(empty($_POST['first_name']) or empty($_POST['last_name']) or empty($_POST['email']) or empty($_POST['password'])) {
+            Router::redirect("/users/profile/error");
+            //   echo 'Please fill all fields and submit again'; 
+        } 
+        else {
+                        
+
+            # More data we want stored with the user
+            //$_POST['created']  = Time::now();
+            $_POST['modified'] = Time::now();
+
+            # Encrypt the password  
+            $_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);            
+
+            # Create an encrypted token via their email address and a random string
+            $_POST['token'] = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string()); 
+
+            # Insert this user into the database
+            $user_id = DB::instance(DB_NAME)->update('users', $_POST, "WHERE user_id = {$_POST['user_id']}");
+
+            # For now, just confirm they've signed up - 
+            # You should eventually make a proper View for this
+           // echo 'You\'re signed up'; 
+           // # Send them back to the login page
+            Router::redirect("/users/login");
+        }
     }
-
-    # If they weren't redirected away, continue:
-
-    # Setup view
-    $this->template->content = View::instance('v_users_profile');
-    $this->template->title   = "Profile of".$this->user->first_name;
-
-    # Render template
-    echo $this->template;
-    # Send them back to the main index.
-        Router::redirect("/");
-}
-
+   
 
 public function logout() {
 

@@ -10,8 +10,8 @@
     <br><br>
 
     <?php if(isset($error)): ?>
-        <div class='error'>
-            Login failed. Please double check your email and password.
+        <div>
+            Error: Complete all the fields and try again.
         </div>
         <br>
     <?php endif; ?>
