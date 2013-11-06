@@ -45,9 +45,9 @@ public function p_signup() {
 
     # For now, just confirm they've signed up - 
     # You should eventually make a proper View for this
-    echo 'You\'re signed up';
+    // echo 'You\'re signed up';
     # Redirect to Posts Page
-    Router::redirect("/posts/index");
+    Router::redirect("/users/login");
 
 }
 
@@ -130,6 +130,8 @@ public function profile() {
 
     # Render template
     echo $this->template;
+    # Send them back to the main index.
+        Router::redirect("/");
 }
 
 
