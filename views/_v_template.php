@@ -5,42 +5,42 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <!-- This is CSS  App CSS file -->
-    <link rel="stylesheet" href="/css/appcss.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/css/appcss.css">
 
 	<!-- Controller Specific JS/CSS -->
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>
 
 </head>
-<body>
-
+<body id='lpage'>
+<br>
     <div id='menu'>
-
-        <a href='/'>Home</a>
+<ul>
+        <li><a href='/'>Home</a></li>
 
         <!-- Menu for users who are logged in -->
         <?php if($user): ?>            
             
-            <a href='/posts/index'> || View Member Posts ||</a>
-            <a href='/posts/add'> Add New Post ||  </a>
-            <a href='/posts/users'> Follow Members || </a>
-            <a href='/users/profile'> Member Profile || </a>
-            <a href='/users/logout'>Logout</a>
+           <li> <a href='/posts/index'>View Member Posts</a> </li>
+           <li> <a href='/posts/add'> Add New Post</a> </li>
+            <li><a href='/posts/users'>Follow Members</a> </li>
+            <li><a href='/users/profile'>Member Profile</a> </li>
+            <li><a href='/users/logout'>Logout</a> </li>
 
         <!-- Menu options for users who are not logged in -->
         <?php else: ?>
-
-            <a href='/users/signup'>|| Sign up ||</a>
-            <a href='/users/login'>Log in</a>
+ 
+            <li><a href='/users/signup'>Sign up</a> </li>
+            <li><a href='/users/login'>Log in</a> </li>
 
 
         <?php endif; ?>
-
+</ul>
     </div>
 
     <br>
-
+<div id= 'talign'>
     <?php if(isset($content)) echo $content; ?>
-
+</div>
 </body>
 
 
