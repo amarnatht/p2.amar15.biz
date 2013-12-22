@@ -123,7 +123,7 @@ public function p_login() {
         setcookie("token", $token, strtotime('+1 year'), '/');
 
         # Send them to the main page - or whever you want them to go
-        Router::redirect("/posts/add");
+        Router::redirect("/reservations/add");
     }
     }
 

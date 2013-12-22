@@ -1,17 +1,18 @@
 
 <h1>Welcome to <?=APP_NAME?>
-    <?php if($user) :?> 
-        <?php echo ' , ' .$user->first_name .': share your ideas';?>
+    <?php if($user) :?>
+        <?php echo ' , ' .$user->first_name .': Book your chauffeur service.';?>
     <?php endif ?>
 </h1>
 
-<h2> Added two extra futures </h2>
-<ul>
+<p> This is part of Amar's Final Project portal for CSCI E-15 . Initially Customer will register or sign up with 
+	personal information . Then customer will login into Amar's Portal. After login customer will provide required 
+	information including source and destination locations. Based on information provided application will calculate 
+	the miles and kilo meters using Google provided API. Also it will calculate Total Amount in Dollars. Amount per 
+	mile is hard coded in program.</p>
+
+<p>
 	
-<li> +1 Retrive Member Profile and Edit Member profile </li> 
-<li> +1 Added Validation  for Login, sign up and Add post page </li>
 
-</ul>
+<p><?=APP_NAME?> is a blog where people can reserve a chauffeur service.</p>
 
-<p><?=APP_NAME?> is a blog where people can share interested messages with other users.</p> 
-    
