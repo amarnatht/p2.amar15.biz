@@ -66,8 +66,10 @@ if (isset($error)) {
 						</select> <br />
 						<label class="input-label">Card Number</label> <br /> 
 						<input
-							id="cCard" maxlength="16" name="credit_card_no" type="text"
-							value="" /> <br /> <label class="input-label">Exp Month</label>
+							id="cCard" maxlength="16" type="text"
+							value="" /> <br /> 
+
+							<label class="input-label">Exp Month</label>
 						<select>
 							<option>1</option>
 							<option>2</option>

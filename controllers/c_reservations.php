@@ -41,9 +41,7 @@ class reservations_controller extends base_controller {
         $_POST['created']  = Time::now();
         $_POST['modified'] = Time::now();
 
-        if(empty($_POST['credit_card_no'])) {
-                $_POST['credit_card_no'] =" ";
-        }
+        
 
         # Insert
         # Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
